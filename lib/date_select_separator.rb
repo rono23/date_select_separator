@@ -5,11 +5,10 @@ module ActionView
     class DateTimeSelector
       def select_month_with_separator
         separators = @options[:use_separators]
-        type = :month
         select_tag = select_month_without_separator
 
-        if @options[:use_hidden].blank? && @options[:discard_month].blank? && use_separators?(separators, type) && separators[:inline].blank?
-          select_tag += content_tag_for_separator(separators, type)
+        if @options[:use_hidden].blank? && @options[:discard_month].blank? && separators.present?
+          select_tag << separator_tag(:month, separators)
         end
 
         select_tag
@@ -19,13 +18,12 @@ module ActionView
       def build_options_and_select_with_separator(type, selected, options = {})
         separators = @options[:use_separators]
 
-        if use_separators?(separators, type)
-          if separators[:inline]
-            options.merge!({:use_separator => separators[type]})
+        if separators.present?
+          if use_inline_separator?(separators)
+            options.merge!({:use_separator => translated_separator_name(type)})
             build_select(type, build_options_with_separator(selected, options))
           else
-            select_tag = build_select(type, build_options(selected, options))
-            select_tag + content_tag_for_separator(separators, type)
+            build_select(type, build_options(selected, options)) + separator_tag(type, separators)
           end
         else
           build_options_and_select_without_separator(type, selected, options)
@@ -34,8 +32,28 @@ module ActionView
       alias_method_chain :build_options_and_select, :separator
 
       private
-        def use_separators?(separators, type)
-          (separators.present? && separators[type].present?)
+        def use_inline_separator?(separators)
+          (separators.class == Hash && separators[:inline] == true)
+        end
+
+        def translated_separator_name(type)
+          key = 'datetime.separators.' + type.to_s
+          I18n.translate(key, :locale => @options[:locale])
+        end
+
+        def separator_tag(type, separators)
+          return '' if use_inline_separator?(separators)
+
+          default_options = {:html_tag => :span, :class_prefix => 'separator'}
+          options = (separators.class == Hash) ? default_options.merge!(separators) : default_options
+
+          if options
+            name = translated_separator_name(type)
+            class_name = options[:class_prefix] + "_#{type}"
+            content_tag(options[:html_tag], name, :class => class_name) + "\n"
+          else
+            ''
+          end
         end
 
         def build_options_with_separator(selected, options = {})
@@ -60,12 +78,6 @@ module ActionView
           end
 
           (select_options.join("\n") + "\n").html_safe
-        end
-
-        def content_tag_for_separator(separators, type)
-          separator_tag = separators[:html_tag] || :span
-          separator_class = (separators[:class_prefix] ? separators[:class_prefix] : "separator") + "_#{type}"
-          content_tag(separator_tag, separators[type], :class => separator_class)
         end
     end
   end
