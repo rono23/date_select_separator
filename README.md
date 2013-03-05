@@ -14,16 +14,30 @@ And then execute:
 
 ## Usage
 
-    # Add a separator after each select_tag
-    <%= f.date_select :birthday, use_month_numbers: true, use_separators: {year: '年', month: '月', day: '日'} %>
-    <%= f.datetime_select :birthday, use_month_numbers: true, time_separator: '', use_separators: {year: '年', month: '月', day: '日', hour: '時', minute: '分'} %>
+Add these lines in your locale file like [config/locales/ja.yml](https://github.com/svenfuchs/rails-i18n/blob/master/rails/locale/ja.yml):
+
+    ja:
+      datetime:
+        separators:
+          year: 年
+          month: 月
+          day: 日
+          hour: 時
+          minute: 分
+          second: 秒
+
+And then use ```use_separators: true```:
+
+    # Add a separator after each select_tags
+    <%= f.date_select :birthday, use_month_numbers: true, use_separators: true %>
+    <%= f.datetime_select :birthday, use_month_numbers: true, time_separator: '', use_separators: true %>
     
-    # Add a separator to each option_tag. Month is used a value like ja.date.month_names in config/locales
-    <%= f.date_select :birthday, use_separators: {inline: true, year: '年', day: '日'} %>
-    <%= f.datetime_select :birthday, time_separator: '', use_separators: {inline: true, year: '年', day: '日', hour: '時', minute: '分'} %>
+    # Add a separator to each option_tags except month. Month is used a value like ja.data.month_names
+    <%= f.date_select :birthday, use_separators: {inline: true} %>
+    <%= f.datetime_select :birthday, time_separator: '', use_separators: {inline: true} %>
     
     # Options: html_tag, class_prefix
-    <%= f.date_select :birthday, use_month_numbers: true, use_separators: {year: '年', month: '月', day: '日', html_tag: :div, class_prefix: 'prefix'} %>
+    <%= f.date_select :birthday, use_month_numbers: true, use_separators: {html_tag: :div, class_prefix: 'foo'} %>
 
 ## Contributing
 
