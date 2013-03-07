@@ -20,7 +20,7 @@ module ActionView
 
         if separators.present?
           if use_inline_separator?(separators)
-            options.merge!({:use_separator => translated_separator_name(type)})
+            options.merge!({:use_separator => separator_name(type, separators)})
             build_select(type, build_options_with_separator(selected, options))
           else
             build_select(type, build_options(selected, options)) + separator_tag(type, separators)
@@ -41,6 +41,15 @@ module ActionView
           I18n.translate(key, :locale => @options[:locale])
         end
 
+        def separator_name(type, separators)
+          if separators.class == Hash && separators[type].present?
+            separators[type]
+          else
+            key = 'datetime.separators.' + type.to_s
+            I18n.translate(key, :locale => @options[:locale])
+          end
+        end
+
         def separator_tag(type, separators)
           return '' if use_inline_separator?(separators)
 
@@ -48,7 +57,7 @@ module ActionView
           options = (separators.class == Hash) ? default_options.merge!(separators) : default_options
 
           if options
-            name = translated_separator_name(type)
+            name = separator_name(type, separators)
             class_name = options[:class_prefix] + "_#{type}"
             content_tag(options[:html_tag], name, :class => class_name) + "\n"
           else
