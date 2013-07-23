@@ -2,7 +2,7 @@
 
 $LOAD_PATH.unshift(File.expand_path('../../lib', __FILE__))
 
-require "test/unit"
+require 'minitest/autorun'
 require 'action_view'
 require 'date_select_separator'
 
