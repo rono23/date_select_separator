@@ -1,6 +1,9 @@
 # DateSelectSeparator
 
-Add separators to data_select on Rails.
+Add separators to data_select and datetime_select on Ruby on Rails.
+
+![](https://dl.dropboxusercontent.com/u/177616/images/github/date_select_separator/1.png)
+![](https://dl.dropboxusercontent.com/u/177616/images/github/date_select_separator/2.png)
 
 ## Installation
 
@@ -14,7 +17,7 @@ And then execute:
 
 ## Usage
 
-Add these lines in your locale file like [config/locales/ja.yml](https://github.com/svenfuchs/rails-i18n/blob/master/rails/locale/ja.yml):
+Add translations to your locale file like below.
 
     ja:
       datetime:
@@ -26,19 +29,19 @@ Add these lines in your locale file like [config/locales/ja.yml](https://github.
           minute: 分
           second: 秒
 
-And then use ```use_separators: true```:
+Add `use_separators: true` option to data_select or datetime_select.
 
     # Add a separator after each select_tags
     <%= f.date_select :birthday, use_month_numbers: true, use_separators: true %>
     <%= f.datetime_select :birthday, use_month_numbers: true, time_separator: '', use_separators: true %>
-    
+
     # Add a separator to each option_tags except month. Month is used a value like ja.data.month_names
-    <%= f.date_select :birthday, use_separators: {inline: true} %>
-    <%= f.datetime_select :birthday, time_separator: '', use_separators: {inline: true} %>
-    
+    <%= f.date_select :birthday, use_separators: { inline: true } %>
+    <%= f.datetime_select :birthday, time_separator: '', use_separators: { inline: true } %>
+
     # Options: html_tag, class_prefix etc
-    <%= f.date_select :birthday, use_month_numbers: true, use_separators: {html_tag: :div, class_prefix: 'foo'} %>
-    <%= f.date_select :birthday, use_month_numbers: true, use_separators: {year: 'yy', month: 'mm', day: 'dd'} %>
+    <%= f.date_select :birthday, use_month_numbers: true, use_separators: { html_tag: :div, class_prefix: 'foo' } %>
+    <%= f.date_select :birthday, use_month_numbers: true, use_separators: { year: 'yy', month: 'mm', day: 'dd' } %>
 
 ## Contributing
 
