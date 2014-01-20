@@ -1,10 +1,4 @@
-# encoding: UTF-8
-
-$LOAD_PATH.unshift(File.expand_path('../../lib', __FILE__))
-
-require 'minitest/autorun'
-require 'action_view'
-require 'date_select_separator'
+require 'test_helper'
 
 class DateSelectSeparatorTest < ActionView::TestCase
 
