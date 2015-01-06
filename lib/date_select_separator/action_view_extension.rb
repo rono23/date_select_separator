@@ -49,14 +49,16 @@ module DateSelectSeparator
           separator_options[type]
         else
           key = 'datetime.separators.' + type.to_s
-          I18n.translate(key, locale: @options[:locale])
+          I18n.translate(key, locale: @options[:locale], default: '')
         end
       end
 
       def separator_tag(type, separator_options)
+        text = separator_text(type, separator_options)
+        return text if text.empty?
+
         default_options = { html_tag: :span, class_prefix: 'separator' }
         options = separator_options.is_a?(Hash) ? default_options.merge(separator_options) : default_options
-        text = separator_text(type, separator_options)
         class_name = options[:class_prefix] + "_#{type}"
         content_tag(options[:html_tag], text, class: class_name) + "\n"
       end
