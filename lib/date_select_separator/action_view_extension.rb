@@ -41,7 +41,7 @@ module DateSelectSeparator
         wrapper_options = separator_options[:wrapper_select_tag]
         wrapper_options = wrapper_options.is_a?(Hash) ? default_options.merge(wrapper_options) : default_options
         class_name = wrapper_options[:class_prefix] + "#{type}"
-        content_tag(wrapper_options[:html_tag], select_tag, class: class_name) + "\n"
+        content_tag(wrapper_options[:html_tag], "\n".html_safe + select_tag, class: class_name) + "\n"
       end
 
       def separator_text(type, separator_options)
