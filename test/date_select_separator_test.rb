@@ -89,8 +89,8 @@ class DateSelectSeparatorTest < ActionView::TestCase
     expected = select_day(Time.mktime(2003, 8, 16))
     expected << %(<span class="foo_day">dd</span>\n).html_safe
 
-    assert_dom_equal expected, select_day(Time.mktime(2003, 8, 16), use_separators: { class_prefix: 'foo' })
-    assert_dom_equal expected, select_day(16, use_separators: { class_prefix: 'foo' })
+    assert_dom_equal expected, select_day(Time.mktime(2003, 8, 16), use_separators: { class_prefix: 'foo_' })
+    assert_dom_equal expected, select_day(16, use_separators: { class_prefix: 'foo_' })
   end
 
   def test_select_day_with_custom_separator_and_translation
@@ -117,8 +117,8 @@ class DateSelectSeparatorTest < ActionView::TestCase
     expected << %(<span class="separator_day">dd</span>\n).html_safe
     expected << %(</span>\n)
 
-    assert_dom_equal expected, select_day(Time.mktime(2003, 8, 16), use_separators: { wrapper_select_tag: { html_tag: :span, class_prefix: 'foo' }})
-    assert_dom_equal expected, select_day(16, use_separators: { wrapper_select_tag: { html_tag: :span, class_prefix: 'foo' }})
+    assert_dom_equal expected, select_day(Time.mktime(2003, 8, 16), use_separators: { wrapper_select_tag: { html_tag: :span, class_prefix: 'foo_' }})
+    assert_dom_equal expected, select_day(16, use_separators: { wrapper_select_tag: { html_tag: :span, class_prefix: 'foo_' }})
   end
 
   def test_select_month
@@ -272,8 +272,8 @@ class DateSelectSeparatorTest < ActionView::TestCase
     expected = select_month(Time.mktime(2003, 8, 16))
     expected << %(<span class="foo_month">mm</span>\n).html_safe
 
-    assert_dom_equal expected, select_month(Time.mktime(2003, 8, 16), use_separators: { class_prefix: 'foo' })
-    assert_dom_equal expected, select_month(8, use_separators: { class_prefix: 'foo' })
+    assert_dom_equal expected, select_month(Time.mktime(2003, 8, 16), use_separators: { class_prefix: 'foo_' })
+    assert_dom_equal expected, select_month(8, use_separators: { class_prefix: 'foo_' })
   end
 
   def test_select_month_with_custom_separator_and_translation
@@ -300,8 +300,8 @@ class DateSelectSeparatorTest < ActionView::TestCase
     expected << %(<span class="separator_month">mm</span>\n).html_safe
     expected << %(</span>\n)
 
-    assert_dom_equal expected, select_month(Time.mktime(2003, 8, 16), use_separators: { wrapper_select_tag: { html_tag: :span, class_prefix: 'foo' }})
-    assert_dom_equal expected, select_month(8, use_separators: { wrapper_select_tag: { html_tag: :span, class_prefix: 'foo' }})
+    assert_dom_equal expected, select_month(Time.mktime(2003, 8, 16), use_separators: { wrapper_select_tag: { html_tag: :span, class_prefix: 'foo_' }})
+    assert_dom_equal expected, select_month(8, use_separators: { wrapper_select_tag: { html_tag: :span, class_prefix: 'foo_' }})
   end
 
   def test_select_year
@@ -395,8 +395,8 @@ class DateSelectSeparatorTest < ActionView::TestCase
     expected = select_year(Time.mktime(2003, 8, 16), start_year: 2003, end_year: 2005)
     expected << %(<span class="foo_year">yy</span>\n).html_safe
 
-    assert_dom_equal expected, select_year(Time.mktime(2003, 8, 16), start_year: 2003, end_year: 2005, use_separators: { class_prefix: 'foo' })
-    assert_dom_equal expected, select_year(2003, start_year: 2003, end_year: 2005, use_separators: { class_prefix: 'foo' })
+    assert_dom_equal expected, select_year(Time.mktime(2003, 8, 16), start_year: 2003, end_year: 2005, use_separators: { class_prefix: 'foo_' })
+    assert_dom_equal expected, select_year(2003, start_year: 2003, end_year: 2005, use_separators: { class_prefix: 'foo_' })
   end
 
   def test_select_year_with_custom_separator_and_translation
@@ -423,8 +423,8 @@ class DateSelectSeparatorTest < ActionView::TestCase
     expected << %(<span class="separator_year">yy</span>\n).html_safe
     expected << %(</span>\n)
 
-    assert_dom_equal expected, select_year(Time.mktime(2003, 8, 16), use_separators: { wrapper_select_tag: { html_tag: :span, class_prefix: 'foo' }})
-    assert_dom_equal expected, select_year(2003, use_separators: { wrapper_select_tag: { html_tag: :span, class_prefix: 'foo' }})
+    assert_dom_equal expected, select_year(Time.mktime(2003, 8, 16), use_separators: { wrapper_select_tag: { html_tag: :span, class_prefix: 'foo_' }})
+    assert_dom_equal expected, select_year(2003, use_separators: { wrapper_select_tag: { html_tag: :span, class_prefix: 'foo_' }})
   end
 
   def test_select_hour
@@ -508,7 +508,7 @@ class DateSelectSeparatorTest < ActionView::TestCase
     expected = select_hour(Time.mktime(2003, 8, 16, 8, 4, 18))
     expected << %(<span class="foo_hour">h</span>\n).html_safe
 
-    assert_dom_equal expected, select_hour(Time.mktime(2003, 8, 16, 8, 4, 18), use_separators: { class_prefix: 'foo' })
+    assert_dom_equal expected, select_hour(Time.mktime(2003, 8, 16, 8, 4, 18), use_separators: { class_prefix: 'foo_' })
   end
 
   def test_select_hour_with_custom_separator_and_translation
@@ -533,7 +533,7 @@ class DateSelectSeparatorTest < ActionView::TestCase
     expected << %(<span class="separator_hour">h</span>\n).html_safe
     expected << %(</span>\n)
 
-    assert_dom_equal expected, select_hour(Time.mktime(2003, 8, 16, 8, 4, 18), use_separators: { wrapper_select_tag: { html_tag: :span, class_prefix: 'foo' }})
+    assert_dom_equal expected, select_hour(Time.mktime(2003, 8, 16, 8, 4, 18), use_separators: { wrapper_select_tag: { html_tag: :span, class_prefix: 'foo_' }})
   end
 
   def test_select_minute
@@ -632,7 +632,7 @@ class DateSelectSeparatorTest < ActionView::TestCase
     expected = select_minute(Time.mktime(2003, 8, 16, 8, 4, 18))
     expected << %(<span class="foo_minute">min</span>\n).html_safe
 
-    assert_dom_equal expected, select_minute(Time.mktime(2003, 8, 16, 8, 4, 18), use_separators: { class_prefix: 'foo' })
+    assert_dom_equal expected, select_minute(Time.mktime(2003, 8, 16, 8, 4, 18), use_separators: { class_prefix: 'foo_' })
   end
 
   def test_select_minute_with_custom_separator_and_translation
@@ -657,7 +657,7 @@ class DateSelectSeparatorTest < ActionView::TestCase
     expected << %(<span class="separator_minute">min</span>\n).html_safe
     expected << %(</span>\n)
 
-    assert_dom_equal expected, select_minute(Time.mktime(2003, 8, 16, 8, 4, 18), use_separators: { wrapper_select_tag: { html_tag: :span, class_prefix: 'foo' }})
+    assert_dom_equal expected, select_minute(Time.mktime(2003, 8, 16, 8, 4, 18), use_separators: { wrapper_select_tag: { html_tag: :span, class_prefix: 'foo_' }})
   end
 
   def test_select_second
@@ -734,7 +734,7 @@ class DateSelectSeparatorTest < ActionView::TestCase
     expected = select_second(Time.mktime(2003, 8, 16, 8, 4, 18))
     expected << %(<span class="foo_second">sec</span>\n).html_safe
 
-    assert_dom_equal expected, select_second(Time.mktime(2003, 8, 16, 8, 4, 18), use_separators: { class_prefix: 'foo' })
+    assert_dom_equal expected, select_second(Time.mktime(2003, 8, 16, 8, 4, 18), use_separators: { class_prefix: 'foo_' })
   end
 
   def test_select_second_with_custom_separator_and_translation
@@ -759,7 +759,7 @@ class DateSelectSeparatorTest < ActionView::TestCase
     expected << %(<span class="separator_second">sec</span>\n).html_safe
     expected << %(</span>\n)
 
-    assert_dom_equal expected, select_second(Time.mktime(2003, 8, 16, 8, 4, 18), use_separators: { wrapper_select_tag: { html_tag: :span, class_prefix: 'foo' }})
+    assert_dom_equal expected, select_second(Time.mktime(2003, 8, 16, 8, 4, 18), use_separators: { wrapper_select_tag: { html_tag: :span, class_prefix: 'foo_' }})
   end
 
   def test_select_date
@@ -1164,7 +1164,7 @@ class DateSelectSeparatorTest < ActionView::TestCase
     expected << "</select>\n"
     expected << %(<span class="foo_day">dd</span>\n)
 
-    assert_dom_equal expected, select_date(Time.mktime(2003, 8, 16), start_year: 2003, end_year: 2005, prefix: "date[first]", use_separators: { class_prefix: 'foo' })
+    assert_dom_equal expected, select_date(Time.mktime(2003, 8, 16), start_year: 2003, end_year: 2005, prefix: "date[first]", use_separators: { class_prefix: 'foo_' })
   end
 
   def test_select_date_with_custom_separator_and_translation
@@ -1233,7 +1233,7 @@ class DateSelectSeparatorTest < ActionView::TestCase
     expected << %(<span class="separator_day">dd</span>\n)
     expected << %(</span>\n)
 
-    assert_dom_equal expected, select_date(Time.mktime(2003, 8, 16), start_year: 2003, end_year: 2005, prefix: "date[first]", use_separators: { wrapper_select_tag: { html_tag: :span, class_prefix: 'foo' }})
+    assert_dom_equal expected, select_date(Time.mktime(2003, 8, 16), start_year: 2003, end_year: 2005, prefix: "date[first]", use_separators: { wrapper_select_tag: { html_tag: :span, class_prefix: 'foo_' }})
   end
 
   def test_select_datetime
@@ -1646,7 +1646,7 @@ class DateSelectSeparatorTest < ActionView::TestCase
     expected << "</select>\n"
     expected << %(<span class="foo_minute">min</span>\n)
 
-    assert_dom_equal expected, select_datetime(Time.mktime(2003, 8, 16, 8, 4, 18), start_year: 2003, end_year: 2005, prefix: "date[first]", use_separators: { class_prefix: 'foo' })
+    assert_dom_equal expected, select_datetime(Time.mktime(2003, 8, 16, 8, 4, 18), start_year: 2003, end_year: 2005, prefix: "date[first]", use_separators: { class_prefix: 'foo_' })
   end
 
   def test_select_datetime_with_custom_separator_and_translation
@@ -1765,7 +1765,7 @@ class DateSelectSeparatorTest < ActionView::TestCase
     expected << %(<span class="separator_minute">min</span>\n)
     expected << %(</span>\n)
 
-    assert_dom_equal expected, select_datetime(Time.mktime(2003, 8, 16, 8, 4, 18), start_year: 2003, end_year: 2005, prefix: "date[first]", use_separators: { wrapper_select_tag: { html_tag: :span, class_prefix: 'foo' }})
+    assert_dom_equal expected, select_datetime(Time.mktime(2003, 8, 16, 8, 4, 18), start_year: 2003, end_year: 2005, prefix: "date[first]", use_separators: { wrapper_select_tag: { html_tag: :span, class_prefix: 'foo_' }})
   end
 
   def test_select_time
@@ -2031,8 +2031,8 @@ class DateSelectSeparatorTest < ActionView::TestCase
     expected << "</select>\n"
     expected << %(<span class="foo_minute">min</span>\n)
 
-    assert_dom_equal expected, select_time(Time.mktime(2003, 8, 16, 8, 4, 18), use_separators: { class_prefix: 'foo' })
-    assert_dom_equal expected, select_time(Time.mktime(2003, 8, 16, 8, 4, 18), include_seconds: false, use_separators: { class_prefix: 'foo' })
+    assert_dom_equal expected, select_time(Time.mktime(2003, 8, 16, 8, 4, 18), use_separators: { class_prefix: 'foo_' })
+    assert_dom_equal expected, select_time(Time.mktime(2003, 8, 16, 8, 4, 18), include_seconds: false, use_separators: { class_prefix: 'foo_' })
   end
 
   def test_select_time_with_custom_separator_and_translation
@@ -2102,8 +2102,8 @@ class DateSelectSeparatorTest < ActionView::TestCase
     expected << %(<span class="separator_minute">min</span>\n)
     expected << %(</span>\n)
 
-    assert_dom_equal expected, select_time(Time.mktime(2003, 8, 16, 8, 4, 18), use_separators: { wrapper_select_tag: { html_tag: :span, class_prefix: 'foo' }})
-    assert_dom_equal expected, select_time(Time.mktime(2003, 8, 16, 8, 4, 18), include_seconds: false, use_separators: { wrapper_select_tag: { html_tag: :span, class_prefix: 'foo' }})
+    assert_dom_equal expected, select_time(Time.mktime(2003, 8, 16, 8, 4, 18), use_separators: { wrapper_select_tag: { html_tag: :span, class_prefix: 'foo_' }})
+    assert_dom_equal expected, select_time(Time.mktime(2003, 8, 16, 8, 4, 18), include_seconds: false, use_separators: { wrapper_select_tag: { html_tag: :span, class_prefix: 'foo_' }})
   end
 
   def test_date_select
@@ -2721,7 +2721,7 @@ class DateSelectSeparatorTest < ActionView::TestCase
     expected << "</select>\n"
     expected << %(<span class="foo_day">dd</span>\n)
 
-    assert_dom_equal expected, date_select("post", "written_on", use_separators: { class_prefix: 'foo' })
+    assert_dom_equal expected, date_select("post", "written_on", use_separators: { class_prefix: 'foo_' })
   end
 
   def test_date_select_with_custom_separator_and_translation
@@ -2840,7 +2840,7 @@ class DateSelectSeparatorTest < ActionView::TestCase
     expected << %(<span class="separator_day">dd</span>\n)
     expected << %(</span>\n)
 
-    assert_dom_equal expected, date_select("post", "written_on", use_separators: { wrapper_select_tag: { html_tag: :span, class_prefix: 'foo' }})
+    assert_dom_equal expected, date_select("post", "written_on", use_separators: { wrapper_select_tag: { html_tag: :span, class_prefix: 'foo_' }})
   end
 
   def test_time_select
@@ -3150,7 +3150,7 @@ class DateSelectSeparatorTest < ActionView::TestCase
     expected << "</select>\n"
     expected << %(<span class="foo_minute">min</span>\n)
 
-    assert_dom_equal expected, time_select("post", "written_on", use_separators: { class_prefix: 'foo' })
+    assert_dom_equal expected, time_select("post", "written_on", use_separators: { class_prefix: 'foo_' })
   end
 
   def test_time_select_with_custom_separator_and_translation
@@ -3587,7 +3587,7 @@ class DateSelectSeparatorTest < ActionView::TestCase
     expected << "</select>\n"
     expected << %(<span class="foo_minute">min</span>\n)
 
-    assert_dom_equal expected, datetime_select("post", "updated_at", use_separators: { class_prefix: 'foo' })
+    assert_dom_equal expected, datetime_select("post", "updated_at", use_separators: { class_prefix: 'foo_' })
   end
 
   def test_datetime_select_with_custom_separator_and_translation
@@ -3772,7 +3772,7 @@ class DateSelectSeparatorTest < ActionView::TestCase
     expected << %(<span class="separator_minute">min</span>\n)
     expected << %(</span>\n)
 
-    assert_dom_equal expected, datetime_select("post", "updated_at", use_separators: { wrapper_select_tag: { html_tag: :span, class_prefix: 'foo' }})
+    assert_dom_equal expected, datetime_select("post", "updated_at", use_separators: { wrapper_select_tag: { html_tag: :span, class_prefix: 'foo_' }})
   end
 
   def test_date_select_with_zero_value_and_no_start_year

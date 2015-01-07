@@ -37,10 +37,10 @@ module DateSelectSeparator
       end
 
       def wrapper_select_tag(select_tag, type, separator_options)
-        default_options = { html_tag: :div, class_prefix: 'wrapper_select' }
+        default_options = { html_tag: :div, class_prefix: 'wrapper_select_' }
         wrapper_options = separator_options[:wrapper_select_tag]
         wrapper_options = wrapper_options.is_a?(Hash) ? default_options.merge(wrapper_options) : default_options
-        class_name = wrapper_options[:class_prefix] + "_#{type}"
+        class_name = wrapper_options[:class_prefix] + "#{type}"
         content_tag(wrapper_options[:html_tag], select_tag, class: class_name) + "\n"
       end
 
@@ -57,9 +57,9 @@ module DateSelectSeparator
         text = separator_text(type, separator_options)
         return text if text.empty?
 
-        default_options = { html_tag: :span, class_prefix: 'separator' }
+        default_options = { html_tag: :span, class_prefix: 'separator_' }
         options = separator_options.is_a?(Hash) ? default_options.merge(separator_options) : default_options
-        class_name = options[:class_prefix] + "_#{type}"
+        class_name = options[:class_prefix] + "#{type}"
         content_tag(options[:html_tag], text, class: class_name) + "\n"
       end
 
