@@ -39,9 +39,11 @@ Add `use_separators: true` option to data_select or datetime_select.
     <%= f.date_select :birthday, use_separators: { inline: true } %>
     <%= f.datetime_select :birthday, time_separator: '', use_separators: { inline: true } %>
 
-    # Options: html_tag, class_prefix etc
+    # Options: html_tag, class_prefix, translations, wrapper_select_tag etc
     <%= f.date_select :birthday, use_month_numbers: true, use_separators: { html_tag: :div, class_prefix: 'foo' } %>
     <%= f.date_select :birthday, use_month_numbers: true, use_separators: { year: 'yy', month: 'mm', day: 'dd' } %>
+    <%= f.date_select :birthday, use_month_numbers: true, use_separators: { wrapper_select_tag: true } %>
+    <%= f.date_select :birthday, use_month_numbers: true, use_separators: { wrapper_select_tag: { html_tag: :span, class_prefix: 'foo_' }} %>
 
 ## Contributing
 
