@@ -1,4 +1,2 @@
-Dummy::Application.routes.draw do
-  resources :samples
-  root 'samples#index'
+Rails.application.routes.draw do
 end

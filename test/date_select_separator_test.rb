@@ -1959,7 +1959,7 @@ class DateSelectSeparatorTest < ActionView::TestCase
     expected << "</select>\n"
     expected << %(<span class="separator_second">sec</span>\n)
 
-    assert_dom_equal expected, select_time(Time.mktime(2003, 8, 16, 8, 4, 18), prompt: true, include_seconds: true,
+    assert_dom_equal expected, select_time(Time.mktime(2003, 8, 16, 8, 4, 18), include_seconds: true,
       prompt: { hour: 'Choose hour', minute: 'Choose minute', second: 'Choose seconds' }, use_separators: true)
   end
 
@@ -3302,7 +3302,7 @@ class DateSelectSeparatorTest < ActionView::TestCase
     # The love zone is UTC+0
     mytz = Class.new(ActiveSupport::TimeZone) {
       attr_accessor :now
-    }.create('tenderlove', 0)
+    }.create('tenderlove', 0, ActiveSupport::TimeZone.find_tzinfo('UTC'))
 
     now       = Time.mktime(2004, 6, 15, 16, 35, 0)
     mytz.now  = now

@@ -1,9 +1,8 @@
-# DateSelectSeparator
+# DateSelectSeparator [![Build Status](https://travis-ci.org/rono23/date_select_separator.svg?branch=master)](https://travis-ci.org/rono23/date_select_separator)
 
 Add separators to data_select and datetime_select on Ruby on Rails.
 
-![](https://dl.dropboxusercontent.com/u/177616/images/github/date_select_separator/1.png)
-![](https://dl.dropboxusercontent.com/u/177616/images/github/date_select_separator/2.png)
+![](https://cloud.githubusercontent.com/assets/26753/14019368/c98d9f7e-f215-11e5-8ad4-0c91297640c3.png)
 
 ## Installation
 

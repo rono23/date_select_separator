@@ -12,13 +12,4 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20140214065227) do
-
-  create_table "samples", force: true do |t|
-    t.string   "name"
-    t.date     "dated_at"
-    t.datetime "datetimed_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
 end
